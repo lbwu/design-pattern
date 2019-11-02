@@ -56,3 +56,21 @@ console.log(someStringIterator.next())
 // 一些内置的语法结构，比如spread operator （[...value]），内部也使用了同样的迭代协议
 var somewords = 'hello world';
 console.log([...somewords]) // ["h", "e", "l", "l", "o"]
+
+
+// 无穷迭代器模式
+function idMaker(){
+    var index = 0;
+    
+    return {
+       next: function(){
+           return {value: index++, done: false};
+       }
+    };
+}
+
+var it = idMaker();
+
+console.log(it.next().value); // '0'
+console.log(it.next().value); // '1'
+console.log(it.next().value); // '2'
